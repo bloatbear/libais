@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0164F4C919FC5CA600907EB3 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0164F4C819FC5CA600907EB3 /* main.c */; };
+		0164F4D119FC5CDD00907EB3 /* libais.c in Sources */ = {isa = PBXBuildFile; fileRef = 0164F4CF19FC5CDD00907EB3 /* libais.c */; };
+		0164F4D319FC5D5700907EB3 /* driver_ais.c in Sources */ = {isa = PBXBuildFile; fileRef = 0164F4D219FC5D5700907EB3 /* driver_ais.c */; };
+		0164F4D619FC5DAC00907EB3 /* bits.c in Sources */ = {isa = PBXBuildFile; fileRef = 0164F4D419FC5DAC00907EB3 /* bits.c */; };
+		0164F4D819FDA84200907EB3 /* gpsd_json.c in Sources */ = {isa = PBXBuildFile; fileRef = 0164F4D719FDA84200907EB3 /* gpsd_json.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,19 @@
 /* Begin PBXFileReference section */
 		0164F4C519FC5CA600907EB3 /* libais */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = libais; sourceTree = BUILT_PRODUCTS_DIR; };
 		0164F4C819FC5CA600907EB3 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		0164F4CF19FC5CDD00907EB3 /* libais.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libais.c; sourceTree = "<group>"; };
+		0164F4D019FC5CDD00907EB3 /* libais.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libais.h; sourceTree = "<group>"; };
+		0164F4D219FC5D5700907EB3 /* driver_ais.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = driver_ais.c; sourceTree = "<group>"; };
+		0164F4D419FC5DAC00907EB3 /* bits.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bits.c; sourceTree = "<group>"; };
+		0164F4D519FC5DAC00907EB3 /* bits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bits.h; sourceTree = "<group>"; };
+		0164F4D719FDA84200907EB3 /* gpsd_json.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gpsd_json.c; sourceTree = "<group>"; };
+		0164F4D919FDAA0900907EB3 /* json.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		0164F4DA19FDAA5700907EB3 /* gps_json.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gps_json.h; sourceTree = "<group>"; };
+		0164F4DB19FDB00800907EB3 /* gps.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gps.h; sourceTree = "<group>"; };
+		0164F4DC19FDB24100907EB3 /* gpsd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gpsd.h; sourceTree = "<group>"; };
+		019CC74A19FE18C900907EB3 /* setup.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = setup.py; sourceTree = "<group>"; };
+		019CC74B19FE1A7500907EB3 /* libais-python.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "libais-python.c"; sourceTree = "<group>"; };
+		019CC74C19FE1A7500907EB3 /* libais-python.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "libais-python.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +75,19 @@
 			isa = PBXGroup;
 			children = (
 				0164F4C819FC5CA600907EB3 /* main.c */,
+				0164F4CF19FC5CDD00907EB3 /* libais.c */,
+				0164F4D019FC5CDD00907EB3 /* libais.h */,
+				0164F4DB19FDB00800907EB3 /* gps.h */,
+				0164F4DC19FDB24100907EB3 /* gpsd.h */,
+				0164F4D919FDAA0900907EB3 /* json.h */,
+				0164F4DA19FDAA5700907EB3 /* gps_json.h */,
+				0164F4D719FDA84200907EB3 /* gpsd_json.c */,
+				0164F4D219FC5D5700907EB3 /* driver_ais.c */,
+				0164F4D419FC5DAC00907EB3 /* bits.c */,
+				0164F4D519FC5DAC00907EB3 /* bits.h */,
+				019CC74A19FE18C900907EB3 /* setup.py */,
+				019CC74B19FE1A7500907EB3 /* libais-python.c */,
+				019CC74C19FE1A7500907EB3 /* libais-python.h */,
 			);
 			path = libais;
 			sourceTree = "<group>";
@@ -119,6 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0164F4C919FC5CA600907EB3 /* main.c in Sources */,
+				0164F4D619FC5DAC00907EB3 /* bits.c in Sources */,
+				0164F4D319FC5D5700907EB3 /* driver_ais.c in Sources */,
+				0164F4D819FDA84200907EB3 /* gpsd_json.c in Sources */,
+				0164F4D119FC5CDD00907EB3 /* libais.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,14 +236,18 @@
 		0164F4CD19FC5CA600907EB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
 		0164F4CE19FC5CA600907EB3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
@@ -232,6 +270,7 @@
 				0164F4CE19FC5CA600907EB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
