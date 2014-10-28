@@ -1006,6 +1006,14 @@ struct ais_t
 #define WGS84F 298.257223563	/* flattening */
 #define WGS84B 6356752.3142	/* polar radius */
 
+/* Some libcs don't have strlcat/strlcpy. Local copies are provided */
+#ifndef HAVE_STRLCAT
+    //size_t strlcat(/*@out@*/char *dst, /*@in@*/const char *src, size_t size);
+#endif
+#ifndef HAVE_STRLCPY
+    //size_t strlcpy(/*@out@*/char *dst, /*@in@*/const char *src, size_t size);
+#endif
+
 #ifdef __cplusplus
 }  /* End of the 'extern "C"' block */
 #endif

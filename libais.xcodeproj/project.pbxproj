@@ -42,6 +42,7 @@
 		019CC74A19FE18C900907EB3 /* setup.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = setup.py; sourceTree = "<group>"; };
 		019CC74B19FE1A7500907EB3 /* libais-python.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "libais-python.c"; sourceTree = "<group>"; };
 		019CC74C19FE1A7500907EB3 /* libais-python.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "libais-python.h"; sourceTree = "<group>"; };
+		390E922C19FFD5B7007BA8D5 /* ais.log */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ais.log; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 		0164F4C719FC5CA600907EB3 /* libais */ = {
 			isa = PBXGroup;
 			children = (
+				390E922C19FFD5B7007BA8D5 /* ais.log */,
 				0164F4C819FC5CA600907EB3 /* main.c */,
 				0164F4CF19FC5CDD00907EB3 /* libais.c */,
 				0164F4D019FC5CDD00907EB3 /* libais.h */,
