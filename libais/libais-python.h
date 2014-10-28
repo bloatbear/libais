@@ -11,4 +11,9 @@
 
 #include <stdio.h>
 
+typedef struct {
+    PyObject_HEAD
+    struct gps_device_t session;
+} Decoder;
+
 #endif /* defined(__libais__libais_python__) */

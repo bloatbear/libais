@@ -29,7 +29,10 @@ extern "C" {
 #ifndef S_SPLINT_S
 #include <pthread.h>	/* pacifies OpenBSD's compiler */
 #endif
+
     
+#define GPS_PATH_MAX	32	/* for names like /dev/serial/by-id/... */
+
 /*
  * Is an MMSI number that of an auxiliary associated with a mother ship?
  * We need to be able to test this for decoding AIS Type 24 messages.

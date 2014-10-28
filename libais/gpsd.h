@@ -73,7 +73,28 @@ struct aivdm_context_t {
 
 #define AIVDM_CHANNELS	2
 
+struct devconfig_t {
+    char path[GPS_PATH_MAX];
+    int flags;
+#define SEEN_GPS 	0x01
+#define SEEN_RTCM2	0x02
+#define SEEN_RTCM3	0x04
+#define SEEN_AIS 	0x08
+    char driver[64];
+    char subtype[64];
+    double activated;
+    unsigned int baudrate, stopbits;	/* RS232 link parameters */
+    char parity;			/* 'N', 'O', or 'E' */
+    double cycle, mincycle;     	/* refresh cycle time in seconds */
+    int driver_mode;    		/* is driver in native mode or not? */
+};
+
+struct gps_data_t {
+    struct devconfig_t dev;
+};
+
 struct gps_device_t {
+    struct gps_data_t gpsdata;
     union {
         struct {
             struct aivdm_context_t context[AIVDM_CHANNELS];
