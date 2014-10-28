@@ -42,5 +42,5 @@ static PyMethodDef libais_methods[] =
 PyMODINIT_FUNC
 initlibais(void)
 {
-    (void) Py_InitModule("decode", libais_methods);
+    (void) Py_InitModule("libais", libais_methods);
 }
