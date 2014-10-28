@@ -84,7 +84,8 @@ bool aivdm_decode(const char *buf, size_t buflen,
     unsigned char fieldcopy[NMEA_MAX*2+1];
     unsigned char *data, *cp;
     unsigned char pad;
-    struct aivdm_context_t *ais_context = malloc(sizeof *ais_context);
+    //struct aivdm_context_t *ais_context = malloc(sizeof *ais_context);
+    struct aivdm_context_t *ais_context;
     int i;
     
     if (buflen == 0)
