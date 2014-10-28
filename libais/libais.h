@@ -42,7 +42,7 @@ extern /*@ observer @*/ const char *gpsd_hexdump(/*@out@*/char *, size_t,
                                                  /*@null@*/char *, size_t);
 
 extern bool aivdm_decode(const char *buf, size_t buflen,
-                         //struct gps_device_t *session,
+                         struct gps_device_t *session,
                          struct ais_t *ais,
                          int debug);
 

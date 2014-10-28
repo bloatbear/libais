@@ -12,6 +12,8 @@
 #include "libais.h"
 //#include "gps.h"
 
+static struct gps_device_t session;
+
 static PyObject*
 libais_decode(PyObject* self, PyObject* args)
 {
@@ -20,12 +22,16 @@ libais_decode(PyObject* self, PyObject* args)
     if (!PyArg_ParseTuple(args, "s", &msg))
         return NULL;
     
+//    printf("Message: %s, length: %ul\n", msg, sizeof(msg));
+    
     struct ais_t ais;
     
     char buf[JSON_VAL_MAX * 2 + 1];
     size_t buflen = sizeof(buf);
     
-    aivdm_decode(msg, sizeof(msg), &ais, 0);
+//    printf("Buffer: %s, length: %ul\n", buf, sizeof(buf));
+    
+    aivdm_decode(msg, strlen(msg)+1, &session, &ais, 0);
 //    printf("type: %d, repeat: %d, mmsi: %d\n", ais.type, ais.repeat, ais.mmsi);
     json_aivdm_dump(&ais, NULL, true, buf, buflen);
 //    printf("JSON: %s", buf);

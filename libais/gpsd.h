@@ -71,6 +71,17 @@ struct aivdm_context_t {
     struct ais_type24_queue_t type24_queue;
 };
 
+#define AIVDM_CHANNELS	2
+
+struct gps_device_t {
+    union {
+        struct {
+            struct aivdm_context_t context[AIVDM_CHANNELS];
+        char    ais_channel;
+        } aivdm;
+    } driver;
+};
+
 /* logging levels */
 #define LOG_ERROR 	-1	/* errors, display always */
 #define LOG_SHOUT	0	/* not an error but we should always see it */

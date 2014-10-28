@@ -58,7 +58,7 @@ const char /*@ observer @*/ *gpsd_hexdump(char *scbuf, size_t scbuflen,
 
 /*@ -fixedformalarray -usedef -branchstate @*/
 bool aivdm_decode(const char *buf, size_t buflen,
-//                         struct gps_device_t *session,
+                         struct gps_device_t *session,
                          struct ais_t *ais,
                          int debug)
 {
@@ -113,52 +113,52 @@ bool aivdm_decode(const char *buf, size_t buflen,
             field[nfields++] = cp + 1;
         }
 
-// PYTHON
-//    /* discard sentences with exiguous commas; catches run-ons */
-//    if (nfields < 7) {
+
+    /* discard sentences with exiguous commas; catches run-ons */
+    if (nfields < 7) {
 //        gpsd_report(&session->context->errout, LOG_ERROR, "malformed AIVDM packet.\n");
-//        return false;
-//    }
-//    
-//    switch (field[4][0]) {
-//        case '\0':
-//            /*
-//             * Apparently an empty channel is normal for AIVDO sentences,
-//             * which makes sense as they don't come in over radio.  This
-//             * is going to break if there's ever an AIVDO type 24, though.
-//             */
-//            if (strncmp((const char *)field[0], "!AIVDO", 6) != 0)
+        return false;
+    }
+    
+    switch (field[4][0]) {
+        case '\0':
+            /*
+             * Apparently an empty channel is normal for AIVDO sentences,
+             * which makes sense as they don't come in over radio.  This
+             * is going to break if there's ever an AIVDO type 24, though.
+             */
+            if (strncmp((const char *)field[0], "!AIVDO", 6) != 0)
 //                gpsd_report(&session->context->errout, LOG_INF,
 //                            "invalid empty AIS channel. Assuming 'A'\n");
-//            ais_context = &session->driver.aivdm.context[0];
-//            session->driver.aivdm.ais_channel ='A';
-//            break;
-//        case '1':
-//            if (strcmp((char *)field[4], (char *)"12") == 0) {
+            ais_context = &session->driver.aivdm.context[0];
+            session->driver.aivdm.ais_channel ='A';
+            break;
+        case '1':
+            if (strcmp((char *)field[4], (char *)"12") == 0) {
 //                gpsd_report(&session->context->errout, LOG_INF,
 //                            "ignoring bogus AIS channel '12'.\n");
-//                return false;
-//            }
-//            /*@fallthrough@*/
-//        case 'A':
-//            ais_context = &session->driver.aivdm.context[0];
-//            session->driver.aivdm.ais_channel ='A';
-//            break;
-//        case '2':
-//            /*@fallthrough@*/
-//        case 'B':
-//            ais_context = &session->driver.aivdm.context[1];
-//            session->driver.aivdm.ais_channel ='B';
-//            break;
-//        case 'C':
+                return false;
+            }
+            /*@fallthrough@*/
+        case 'A':
+            ais_context = &session->driver.aivdm.context[0];
+            session->driver.aivdm.ais_channel ='A';
+            break;
+        case '2':
+            /*@fallthrough@*/
+        case 'B':
+            ais_context = &session->driver.aivdm.context[1];
+            session->driver.aivdm.ais_channel ='B';
+            break;
+        case 'C':
 //            gpsd_report(&session->context->errout, LOG_INF,
 //                        "ignoring AIS channel C (secure AIS).\n");
-//            return false;
-//        default:
+            return false;
+        default:
 //            gpsd_report(&session->context->errout, LOG_ERROR,
 //                        "invalid AIS channel 0x%0X .\n", field[4][0]);
-//            return false;
-//    }
+            return false;
+    }
     
     nfrags = atoi((char *)field[1]); /* number of fragments to expect */
     ifrag = atoi((char *)field[2]); /* fragment id */
@@ -171,23 +171,23 @@ bool aivdm_decode(const char *buf, size_t buflen,
     /* assemble the binary data */
     
 
-// PYTHON
-//    /* check fragment ordering */
-//    if (ifrag != ais_context->decoded_frags + 1) {
+    /* check fragment ordering */
+    if (ifrag != ais_context->decoded_frags + 1) {
 //        gpsd_report(&session->context->errout, LOG_ERROR,
 //                    "invalid fragment #%d received, expected #%d.\n",
 //                    ifrag, ais_context->decoded_frags + 1);
-//        if (ifrag != 1)
-//            return false;
-//        /* else, ifrag==1: Just discard all that was previously decoded and
-//         * simply handle that packet */
-//        ais_context->decoded_frags = 0;
-//    }
-//    
-//    if (ifrag == 1) {
-//        (void)memset(ais_context->bits, '\0', sizeof(ais_context->bits));
-//        ais_context->bitlen = 0;
-//    }
+        if (ifrag != 1)
+            return false;
+        /* else, ifrag==1: Just discard all that was previously decoded and
+         * simply handle that packet */
+        ais_context->decoded_frags = 0;
+    }
+
+
+    if (ifrag == 1) {
+        (void)memset(ais_context->bits, '\0', sizeof(ais_context->bits));
+        ais_context->bitlen = 0;
+    }
     
     /* wacky 6-bit encoding, shades of FIELDATA */
     /*@ +charint @*/
@@ -237,7 +237,6 @@ bool aivdm_decode(const char *buf, size_t buflen,
         /* decode the assembled binary packet */
         
         struct gpsd_errout_t errout;
-        
         return ais_binary_decode(&errout,
                                  ais,
                                  ais_context->bits,
