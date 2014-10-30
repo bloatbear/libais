@@ -31,12 +31,13 @@ libais_decode(PyObject* self, PyObject* args)
     
 //    printf("Buffer: %s, length: %ul\n", buf, sizeof(buf));
     
-    aivdm_decode(msg, strlen(msg)+1, &session, &ais, 0);
-//    printf("type: %d, repeat: %d, mmsi: %d\n", ais.type, ais.repeat, ais.mmsi);
-    json_aivdm_dump(&ais, NULL, true, buf, buflen);
-//    printf("JSON: %s", buf);
-
-    return Py_BuildValue("s", buf);
+    if (aivdm_decode(msg, strlen(msg)+1, &session, &ais, 1)) {
+//      printf("type: %d, repeat: %d, mmsi: %d\n", ais.type, ais.repeat, ais.mmsi);
+        json_aivdm_dump(&ais, NULL, true, buf, buflen);
+//      printf("JSON: %s", buf);
+        return Py_BuildValue("s", buf);
+    }
+    return Py_None;
 }
 
 static PyMethodDef libais_methods[] =
