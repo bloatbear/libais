@@ -37,6 +37,7 @@ libais_decode(PyObject* self, PyObject* args)
 //      printf("JSON: %s", buf);
         return Py_BuildValue("s", buf);
     }
+    Py_INCREF(Py_None);
     return Py_None;
 }
 
