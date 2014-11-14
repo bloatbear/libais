@@ -131,7 +131,7 @@ bool aivdm_decode(const char *buf, size_t buflen,
             if (strncmp((const char *)field[0], "!AIVDO", 6) != 0) {
 //                gpsd_report(&session->context->errout, LOG_INF,
 //                            "invalid empty AIS channel. Assuming 'A'\n");
-            }
+            }
             ais_context = &session->driver.aivdm.context[0];
             session->driver.aivdm.ais_channel ='A';
             break;
